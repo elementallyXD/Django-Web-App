@@ -6,7 +6,8 @@ import { addTodo } from '../../actions/todos';
 export class Form extends Component {
     state = {
         title: '',
-        description: ''
+        description: '',
+        category: ''
     }
 
     static propTypes = {
@@ -17,17 +18,18 @@ export class Form extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        const { title, description } = this.state;
-        const todo = { title, description };
+        const { title, description, category } = this.state;
+        const todo = { title, description, category };
         this.props.addTodo(todo);
         this.setState({
             title: '',
-            description: ''
+            description: '',
+            category: ''
         });
     };
 
     render() {
-        const { title, description } = this.state;
+        const { title, description, category } = this.state;
         return (
             <div className="card card-body mt-4 mb-4">
                 <h2>Add Todo</h2>
@@ -50,6 +52,16 @@ export class Form extends Component {
                             name="description"
                             onChange={this.onChange}
                             value={description}
+                        />
+                    </div>
+                     <div className="form-group">
+                        <label>Category</label>
+                        <input
+                            className="form-control"
+                            type="number"
+                            name="category"
+                            onChange={this.onChange}
+                            value={category}
                         />
                     </div>
                     <div className="form-group">

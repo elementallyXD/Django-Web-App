@@ -24,6 +24,7 @@ class TodoList extends Component {
                         <tr>
                             <th>title</th>
                             <th>description</th>
+                            <th>category</th>
                             <th>done</th>
                             <th></th>
                         </tr>
@@ -33,6 +34,8 @@ class TodoList extends Component {
                             <tr key={todo.id}>
                                 <td>{todo.title}</td>
                                 <td>{todo.description}</td>
+                                <td>{todo.category}</td>
+
                                 <td><input
                                     type="checkbox"
                                     onChange={this.props.toggleTodo.bind(this, todo)}
