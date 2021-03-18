@@ -10,7 +10,7 @@ class TodoList extends Component {
         deleteTodo: PropTypes.func.isRequired,
         toggleTodo: PropTypes.func.isRequired
     };
-//
+
     componentDidMount() {
         this.props.getTodos();
     }

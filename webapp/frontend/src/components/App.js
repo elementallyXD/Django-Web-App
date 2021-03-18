@@ -1,3 +1,4 @@
+
 import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
@@ -9,16 +10,16 @@ import store from '../store';
 
 class App extends Component {
     render() {
-            return (
-                <Provider store={store}>
-                    //<Fragment>
-                       <div className='container'>
-                            <Header />
-                            <DashBoard />
-                       </div>
-                    //</Fragment>
-                </Provider>
-            )
+        return (
+            <Provider store={store}>
+                <Fragment>
+                    <Header />
+                    <div className='container'>
+                        <DashBoard />
+                    </div>
+                </Fragment>
+            </Provider>
+        )
     }
 }
 
