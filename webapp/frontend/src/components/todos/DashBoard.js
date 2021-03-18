@@ -6,8 +6,8 @@ import Form from './Form';
 export default function DashBoard() {
     return (
         <Fragment>
-            <Form/>
             <TodoList/>
+             <Form/>
         </Fragment>
     )
 }
