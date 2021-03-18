@@ -198,6 +198,10 @@ Thumbs.db #thumbnail cache on Windows
 # CMake
 cmake-build-*/
 
+# node
+node_modules
+E:/NTUU/WebApp/webapp/node_modules/
+
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml
 
@@ -323,3 +327,4 @@ fabric.properties
 # operating system-related files
 
 # profiling data
+
