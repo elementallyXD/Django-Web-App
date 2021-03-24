@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('frontend.urls')),
     path('', include('web.urls')),
+    path('accounts/', include('accounts.urls')),
     path('auth/', obtain_auth_token),
     path('openapi',
          get_schema_view(

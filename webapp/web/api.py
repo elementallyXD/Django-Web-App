@@ -1,10 +1,10 @@
 from .models import Todo, Category
 from rest_framework import viewsets, permissions
 from .serializers import TodoSerializer, CategorySerializer
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Todo ViewSet
-class TodoViewSet(viewsets.ModelViewSet):
+class TodoViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
     queryset = Todo.objects.all()
     permission_classes = [
         permissions.AllowAny
@@ -13,7 +13,7 @@ class TodoViewSet(viewsets.ModelViewSet):
 
 
 # Category ViewSet
-class CategoryViewSet(viewsets.ModelViewSet):
+class CategoryViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
     queryset = Category.objects.all()
     permission_classes = [
         permissions.AllowAny

@@ -36,7 +36,7 @@ class Profile(models.Model):
     birthdate = models.DateField(null=True, blank=True)
     gender = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, null=True, blank=True)
 
-    def __str__(self):  # __unicode__ for Python 2
+    def __str__(self):
         return self.user.username
 
 
