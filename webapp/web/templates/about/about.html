@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>
+    Hello, {{ user.username|default:'Guest' }}!
+</p>
+
+<p>It's webapp - TODO list. This application can be used for time management and tracking tasks.</p>
+
+<p>The API can store and manage user data that reflected in the todo list.
+</p>
+
+{% endblock %}
