@@ -2,8 +2,6 @@ from rest_framework import serializers
 from .models import Todo, Category
 from django.contrib.auth.models import User
 from rest_framework.authtoken.views import Token
-# from django import forms
-# from dobwidget import DateOfBirthWidget
 
 
 # Todo serializer
