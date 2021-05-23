@@ -25,6 +25,8 @@ urlpatterns = [
     path('', include('web.urls')),
     path('accounts/', include('accounts.urls')),
     path('auth/', obtain_auth_token),
+    path('chat/', include('chat.urls')),
+    path('chat/', include('chat.urls')),
     path('openapi',
          get_schema_view(
             title="Todo list",

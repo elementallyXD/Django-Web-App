@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'webapp',
     'accounts',
+    'channels',
+    'chat',
 ]
 #
 # REST_FRAMEWORK = {
@@ -81,7 +83,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'webapp.wsgi.application'
-
+ASGI_APPLICATION = "webapp.asgi.application"
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
