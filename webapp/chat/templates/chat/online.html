@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Online{% endblock %}
+
+{% block content %}
+	<div class="container mt-4">
+		{% for connected_user in connected_users %}
+   			 <li>{{ connected_user }}</li>
+		{% endfor %}
+	</div>
+{% endblock content %}

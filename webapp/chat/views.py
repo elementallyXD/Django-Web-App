@@ -5,19 +5,23 @@ from channels.layers import get_channel_layer
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
+
 from chat.models import ConnectedUsers
 
 
-def index(request):
-    return render(request, 'chat/index.html')
+# def index(request):
+#     return render(request, 'chat/index.html')
 
-
-def room(request, room_name):
-    return render(request, 'chat/room.html', {
-        'room_name': room_name
+@login_required
+def room(request):
+    return render(request, 'chatroom.html', {
+        'room_name': 'chatroom'
     })
 
 
+@login_required
 def webhook(request):
     channel_layer = get_channel_layer()
     if not channel_layer.groups:
@@ -32,6 +36,9 @@ def webhook(request):
     return HttpResponse("Result is OK. Check windows of the firstly created chat for a new message")
 
 
+@staff_member_required
 def users_online(request):
     connected_users = [str(user) for user in ConnectedUsers.objects.all()]
-    return HttpResponse("Currently connected: %s" % connected_users)
+    return render(request, 'chat\online.html', {
+        'connected_users': connected_users
+    })
