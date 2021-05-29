@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'accounts',
     'channels',
     'chat',
+    'django_celery_results',
 ]
 #
 # REST_FRAMEWORK = {
@@ -139,3 +140,19 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CELERY_BROKER_URL='redis://localhost:6379/5'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/6'
+
+
+# CELERY_RESULT_BACKEND = 'django-db'
+CELERY_CACHE_BACKEND = 'default'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table',
+    }
+}

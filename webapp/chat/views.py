@@ -9,7 +9,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
 from chat.models import ConnectedUsers
-
+from chat.tasks import add, mul, shared_task
+from datetime import datetime
 
 # def index(request):
 #     return render(request, 'chat/index.html')
@@ -42,3 +43,15 @@ def users_online(request):
     return render(request, 'chat\online.html', {
         'connected_users': connected_users
     })
+
+
+def run_task(request):
+    sum_task_id = add.delay(2, 5)
+    ml_task_id = mul.delay(2, 5)
+
+    now = datetime.now()
+    current_time = now.strftime("%d/%m/%Y %H:%M:%S")
+
+    return HttpResponse('Task1 name: \"%s\", job: \"%s\" res: %s time: %s ------ \nTask2 name: \"%s\" job: \"%s\" res: %s time: %s'
+                        % (add.name, sum_task_id, sum_task_id.get(), current_time, mul.name, ml_task_id, ml_task_id.get(), current_time))
+

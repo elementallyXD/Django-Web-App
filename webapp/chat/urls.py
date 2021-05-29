@@ -1,12 +1,12 @@
-# chat/urls.py
 from django.urls import path
 from chat.models import ConnectedUsers
 from . import views
 
 urlpatterns = [
-    # path('webhook/', views.webhook),
+    path('webhook/', views.webhook),
     path('chatroom/', views.room, name='chatroom'),
     path('online/', views.users_online, name='online'),
+    path('run_tasks/', views.run_task),
     # path('', views.index, name='index'),
     # path('<str:room_name>/', views.room, name='room'),
 ]
