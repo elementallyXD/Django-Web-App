@@ -1,4 +1,5 @@
 from celery import shared_task, Task
+from django.core.mail import EmailMessage
 
 
 class CallbackTask(Task):
@@ -21,3 +22,11 @@ def add(x, y):
 def mul(x, y):
     total = x * y
     return total
+
+
+@shared_task(name="send_email_tasks", base=CallbackTask)
+def send_email(emails: list):
+    message_content = "Lab3 task work!"
+    msg = EmailMessage("lab3", message_content, 'sgame666@gmail.com', emails)
+    msg.send()
+    return "successful"
